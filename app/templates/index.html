@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>🛡️ Security Incident Response Tool</h1>
+    <p>Transform your security incident descriptions into structured legal guidance using AI and legal precedents</p>
+</div>
+
+<div class="card">
+    <h2>🔍 How It Works</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        <div>
+            <h3>📝 1. Describe Incident</h3>
+            <p>Provide details about your security incident in plain language</p>
+        </div>
+        <div>
+            <h3>⚡ 2. AI Analysis</h3>
+            <p>Our NLP system identifies legal issues and patterns</p>
+        </div>
+        <div>
+            <h3>🎯 3. Get Guidance</h3>
+            <p>Receive structured recommendations and relevant precedents</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>🚨 Analyze Your Security Incident</h2>
+    <form id="incidentForm" action="{{ url_for('main.analyze_incident') }}" method="POST">
+        <div class="form-group">
+            <label for="description">📋 Incident Description *</label>
+            <textarea id="description" name="description" placeholder="Describe the security incident in detail. Include what happened, when, who was involved, and any immediate impacts..." required></textarea>
+            <small>Provide at least 10 characters for accurate analysis</small>
+        </div>
+
+        <div class="form-group">
+            <label for="incident_type">🔧 Incident Type</label>
+            <select id="incident_type" name="incident_type">
+                <option value="">Select incident type (or let AI detect)</option>
+                <option value="data_breach">Data Breach</option>
+                <option value="privacy_violation">Privacy Violation</option>
+                <option value="cyber_attack">Cyber Attack</option>
+                <option value="unauthorized_access">Unauthorized Access</option>
+                <option value="intellectual_property">Intellectual Property</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="severity">⚠️ Severity Level</label>
+            <select id="severity" name="severity">
+                <option value="low">Low - Minor impact</option>
+                <option value="medium" selected>Medium - Significant impact</option>
+                <option value="high">High - Critical impact</option>
+            </select>
+            <div id="riskIndicator" class="risk-medium" style="margin-top: 0.5rem;">Selected Severity: MEDIUM</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jurisdiction">🌍 Jurisdiction</label>
+            <select id="jurisdiction" name="jurisdiction">
+                <option value="general">General/International</option>
+                <option value="EU">European Union (GDPR)</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">🚀 Analyze Incident</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>💡 Supported Incident Types</h2>
+    <ul style="columns: 2; list-style-type: none; padding: 0;">
+        <li>✅ Data Breaches & Leaks</li>
+        <li>✅ Privacy Violations</li>
+        <li>✅ Cyber Attacks</li>
+        <li>✅ Unauthorized Access</li>
+        <li>✅ Intellectual Property Theft</li>
+        <li>✅ Security Policy Violations</li>
+        <li>✅ Network Intrusions</li>
+        <li>✅ Malware Infections</li>
+    </ul>
+</div>
+{% endblock %}
