@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>📝 New Incident Report</h2>
+    <form method="POST" action="{{ url_for('main.analyze_incident') }}">
+        <!-- Same form content as index.html -->
+    </form>
+</div>
+{% endblock %}
